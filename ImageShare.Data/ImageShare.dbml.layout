@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="ImageShare">
+  <DataContextMoniker Name="/ImageShareDataContext" />
+  <nestedChildShapes>
+    <classShape Id="3ae609e2-4c8c-4053-afa4-65b77d28ed4d" absoluteBounds="3.5, 1.25, 2, 1.1939925130208338">
+      <DataClassMoniker Name="/ImageShareDataContext/ImageLike" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e7629399-4e3b-407d-82a7-2e9b3839ea2a" absoluteBounds="3.515, 1.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="11b89091-56b6-4f90-ae6a-0e3458348cb7" absoluteBounds="0.75, 0.875, 2, 1.9631982421875">
+      <DataClassMoniker Name="/ImageShareDataContext/User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0d743ddb-024e-4b52-b864-a4f421a9de74" absoluteBounds="0.765, 1.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="25af92c1-78ca-4fce-8eb1-3103f35054d0" absoluteBounds="0.75, 3.875, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/ImageShareDataContext/Image" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9cabaca2-bdc2-43b4-81a8-33f4280371e8" absoluteBounds="0.765, 4.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 1.84699625651042); (3.5 : 1.84699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ImageShareDataContext/User/User_ImageLike" />
+      <nodes>
+        <classShapeMoniker Id="11b89091-56b6-4f90-ae6a-0e3458348cb7" />
+        <classShapeMoniker Id="3ae609e2-4c8c-4053-afa4-65b77d28ed4d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 4.85659912109375); (4.5 : 4.85659912109375); (4.5 : 2.44399251302083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ImageShareDataContext/Image/Image_ImageLike" />
+      <nodes>
+        <classShapeMoniker Id="25af92c1-78ca-4fce-8eb1-3103f35054d0" />
+        <classShapeMoniker Id="3ae609e2-4c8c-4053-afa4-65b77d28ed4d" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

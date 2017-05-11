@@ -1,0 +1,39 @@
+﻿@using ImageShare.Data
+@model MvcApplication29.Models.UserLikesViewModel
+
+@if (Model.User != null)
+{
+    <h2>Images Liked by @Model.User.FirstName @Model.User.LastName</h2>
+
+    <div style="margin-top: 20px;">
+        <table class="table table-hover table-striped table-bordered">
+            <tr>
+                <th>Image</th>
+                <th>Uploaded By</th>
+                <th>View Count</th>
+                <th>Likes Count</th>
+                <th>Date Uploaded</th>
+            </tr>
+            @foreach (Image image in Model.LikedImages)
+            {
+                <tr>
+                    <td>
+                        <a href="/home/showimage?id=@image.Id">
+                            <img style="max-height: 100px;" src="/Images/@image.ImageFile"/>
+                        </a>
+                    </td>
+                    <td>
+                        @image.FirstName @image.LastName
+                    </td>
+                    <td>@image.ViewCount</td>
+                    <td>@image.ImageLikes.Count</td>
+                    <td>@image.DateUploaded.ToShortDateString()</td>
+                </tr>
+            }
+        </table>
+    </div>
+}
+else
+{
+    <h1>User not found</h1>
+}

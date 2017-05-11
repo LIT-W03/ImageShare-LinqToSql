@@ -1,0 +1,30 @@
+﻿@model MvcApplication29.Models.ShowImageViewModel
+
+<div class="row" style="text-align: center;" data-image-id="@Model.Image.Id">
+    <h3>Image uploaded by @Model.Image.FirstName @Model.Image.LastName on @Model.Image.DateUploaded.ToShortDateString()</h3>
+    <img style="max-width: 800px;" src="/Images/@Model.Image.ImageFile" />
+    <h4>View Count: <span id="viewCount">@Model.Image.ViewCount</span></h4>
+    <h4>Likes Count: <span id="likesCount">@Model.Likes </span></h4>
+    @if (Model.IsAuthenticated)
+    {
+        if (Model.HasUserLiked)
+        {
+            <button class="btn btn-primary" disabled="true">
+                <span class="glyphicon glyphicon-thumbs-up"></span> Liked!
+            </button>
+        }
+        else
+        {
+            <button class="btn btn-primary" id="like-button">
+                <span class="glyphicon glyphicon-thumbs-up"></span>
+                 Like
+            </button>
+        }
+
+    }
+</div>
+
+@section scripts
+{
+    <script src="~/Scripts/show-image.js"></script>
+}

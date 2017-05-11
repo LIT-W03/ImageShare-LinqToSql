@@ -1,0 +1,121 @@
+﻿@using ImageShare.Data
+@model MvcApplication29.Models.IndexViewModel
+
+@if (Model.User == null)
+{
+    <div class="row">
+        <div class="col-md-1">
+            <a href="/account/signup" class="btn btn-primary">Sign up</a>
+        </div>
+        <div class="col-md-1">
+            <a href="/account/signin" class="btn btn-primary">Sign in</a>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row">
+        <h3>Welcome back @Model.User.FirstName @Model.User.LastName. <a href="/home/userlikes?email=@Model.User.EmailAddress">Click here</a> to view your liked images
+        </h3>
+        <a href="/account/signout">Log out</a>
+    </div>
+}
+
+<div class="row" style="margin-top: 20px;">
+    <form method="POST" action="/home/upload" enctype="multipart/form-data">
+        <div class="col-md-3">
+            <input type="text" class="form-control" placeholder="First Name" name="firstName" />
+        </div>
+        <div class="col-md-3">
+            <input type="text" class="form-control" placeholder="Last Name" name="lastName" />
+        </div>
+        <div class="col-md-3">
+            <input type="file" class="form-control" name="image" />
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-primary btn-block">Upload</button>
+        </div>
+    </form>
+</div>
+
+<div style="margin-top: 20px;">
+    <h3>Most Popular</h3>
+    <table class="table table-hover table-striped table-bordered">
+        <tr>
+            <th>Image</th>
+            <th>Uploaded By</th>
+            <th>View Count</th>
+            <th>Date Uploaded</th>
+        </tr>
+        @foreach (Image image in Model.MostPopular)
+        {
+            <tr>
+                <td>
+                    <a href="/home/showimage?id=@image.Id">
+                        <img style="max-height: 100px;" src="/Images/@image.ImageFile" />
+                    </a>
+                </td>
+                <td>
+                    @image.FirstName @image.LastName
+                </td>
+                <td>@image.ViewCount</td>
+                <td>@image.DateUploaded.ToShortDateString()</td>
+            </tr>
+        }
+    </table>
+</div>
+<div style="margin-top: 20px;">
+    <h3>Most Recent</h3>
+    <table class="table table-hover table-striped table-bordered">
+        <tr>
+            <th>Image</th>
+            <th>Uploaded By</th>
+            <th>View Count</th>
+            <th>Date Uploaded</th>
+        </tr>
+        @foreach (Image image in Model.MostRecent)
+        {
+            <tr>
+                <td>
+                    <a href="/home/showimage?id=@image.Id">
+                        <img style="max-height: 100px;" src="/Images/@image.ImageFile"/>
+                    </a>
+                </td>
+                <td>
+                    @image.FirstName @image.LastName
+                </td>
+                <td>@image.ViewCount</td>
+                <td>@image.DateUploaded.ToShortDateString()</td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div style="margin-top: 20px;">
+    <h3>Most Liked</h3>
+    <table class="table table-hover table-striped table-bordered">
+        <tr>
+            <th>Image</th>
+            <th>Uploaded By</th>
+            <th>View Count</th>
+            <th>Likes Count</th>
+            <th>Date Uploaded</th>
+        </tr>
+        @foreach (Image image in Model.MostLikedImages)
+        {
+            <tr>
+                <td>
+                    <a href="/home/showimage?id=@image.Id">
+                        <img style="max-height: 100px;" src="/Images/@image.ImageFile" />
+                    </a>
+                </td>
+                <td>
+                    @image.FirstName @image.LastName
+                </td>
+                <td>@image.ViewCount</td>
+                <td>@image.ImageLikes.Count</td>
+                <td>@image.DateUploaded.ToShortDateString()</td>
+            </tr>
+        }
+    </table>
+</div>

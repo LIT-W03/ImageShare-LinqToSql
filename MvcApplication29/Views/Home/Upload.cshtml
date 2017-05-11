@@ -1,0 +1,8 @@
+﻿@model MvcApplication29.Models.UploadViewModel
+
+<h2>Thank you @Model.Image.FirstName @Model.Image.LastName for uploading an image!</h2>
+<h2>
+    Share this link with your friends: <a href="@Model.HostName/home/showimage?id=@Model.Image.Id">
+        @Model.HostName/home/showimage?id=@Model.Image.Id
+    </a>
+</h2>
